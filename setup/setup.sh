@@ -1,0 +1,101 @@
+#!/bin/bash
+####################
+# Zabbix install one-liner custom install
+####################
+# Description:
+#  - retrieve scripts from github
+#  - customize configuration of zabbix-agent
+#  - create zabbix cronjob
+#  - customize zabbix user
+#  - test new items
+####################
+
+ZBX_REPO='git://wiredcraft'
+ZBX_HOME=/usr/share/zabbix
+
+## Zabbix user needs shell to run sudo
+usermod -s /bin/bash -m $ZBX_HOME zabbix
+
+## Functions
+## Setup or update Zabbix scripts
+sync_scripts() {
+    cd $ZBX_HOME
+    if [ -d scripts/.git ]; then
+        cd scripts
+        git pull
+    else
+        git clone $ZBX_REPO scripts
+    fi
+}
+
+create_mysql_config() {
+
+#    if [ -f $ZBX_HOME/conf/my.cnf ]; then
+#        echo -n ' * Keep existing login/pass defined in conf/my.cnf ? (Y/n)'; read MY_KEEP
+#        if [ -z "$MY_KEEP" -o "$MY_KEEP" == 'Y' -o "$MY_KEEP" == 'y' ]; then
+#            return
+#        else
+#            echo '   ==> Overriding existing configuration'
+#        fi
+#    fi
+
+    echo -n ' * Enter admin MySQL user: '; read MY_USER
+    echo -n ' * Enter admin MySQL pass: '; read -s MY_PASS
+    echo -n ' * Enter MySQL host (localhost): '; read MY_HOST
+    [ -z "$MY_HOST" ] && MY_HOST='localhost' || MY_HOST=$MY_HOST
+    MY_MONIT_PASS=$(cat /dev/urandom | tr -dc "a-zA-Z0-9-_" | head -c 10)
+
+    MYSQL="mysql -u $MY_USER -p$MY_PASS -h $MY_HOST"
+    echo
+    echo -n ' * Creating monitoring MySQL user... '
+    $MYSQL -e "create user 'monitoring'@'$MY_HOST' identified by '$MY_MONIT_PASS'; grant PROCESS, REPLICATION CLIENT, SHOW DATABASES on *.* to 'monitoring'@'$MY_HOST'; flush privileges;" 2> /dev/null
+    [ $? -eq 0 ] && echo 'OK' || echo 'Error'
+
+    ## Creating configuration file
+    mkdir -p $ZBX_HOME/conf
+    cat > $ZBX_HOME/conf/my.cnf << EOF
+[client]
+user=monitoring
+password=$MY_MONIT_PASS
+host=$MY_HOST
+EOF
+}
+
+
+
+## Handle MySQL
+echo -n 'Install MySQL monitoring on this host ? (Y/n) '; read MY_STATUS
+
+if [ -z "$MY_STATUS" -o "$MY_STATUS" == 'Y' -o "$MY_STATUS" == 'y' ]; then
+    MY_ENABLE=1
+else
+    MY_ENABLE=0
+fi
+
+[ $((MY_ENABLE)) -eq 1 ] && create_mysql_config
+
+## Create crontab
+## TODO: use patch instead
+if [ ! -f /etc/cron.d/zabbix ]; then
+    cp $ZBX_HOME/setup/zabbix.cron /etc/cron.d/zabbix
+else
+    echo 'Commenting out existing cronjob for zabbix...'
+    sed -i 's/^/# /' /etc/cron.d/zabbix
+    echo 'Appending new cronjob for zabbix...'
+    cat $ZBX_HOME/setup/zabbix.cron >> /etc/cron.d/zabbix
+fi
+
+## Appending UserParameters to zabbix-agentd.conf
+## TODO: use patch instead
+if [ ! -f /etc/zabbix/zabbix-agentd.conf ]; then
+    echo 'Missing zabbix configuration file.'
+    echo 'Install Zabbix and append the configuration manually'
+    echo " Custom configuration available in $ZBX_HOME/setup/zabbix-agentd.conf"
+else
+    echo 'Appending custom UserParameters to zabbix configuration file...'
+    cat $ZBX_HOME/setup/zabbix-agentd.conf >> /etc/zabbix/zabbix-agentd.conf
+fi
+
+## Restarting agent
+service zabbix-agentd restart
+

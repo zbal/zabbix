@@ -1,0 +1,19 @@
+#!/bin/bash
+################################
+# Configuration file for MySQL custom monitoring
+################################
+################################
+
+# Define query array
+QUERY_LIST[${#QUERY_LIST[*]}]='long_sql_query';
+QUERY_LIST[${#QUERY_LIST[*]}]='mysql_user_count';
+
+# Query definition
+
+long_sql_query="SELECT CONCAT(id, ' - ', user, ' - ', time, ' - ', left(ifnull(state,''), 25), ' - ', left(ifnull(info,''), 50)) as zabbix_long_query
+ 	FROM information_schema.processlist 
+	WHERE command <> 'Sleep' AND command <> 'Binlog Dump' AND state NOT LIKE 'Waiting for master to send event' AND state NOT LIKE 'Has read all relay log%' AND info NOT LIKE 'SELECT CONCAT%'
+	ORDER BY time DESC limit 1;"
+	
+mysql_user_count='use mysql; SELECT count(*) FROM user;'
+

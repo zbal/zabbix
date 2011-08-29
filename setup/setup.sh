@@ -50,8 +50,16 @@ sync_scripts() {
     if [ -d source/.git ]; then
 	      cd source
         git pull
+        if [ $? -ne 0 ]; then
+	          echo "Error while pulling the repo. Aborting."
+						exit 1
+				fi
     else
         git clone $ZBX_REPO source
+        if [ $? -ne 0 ]; then
+	          echo "Error while cloning the repo. Aborting."
+						exit 1
+				fi
     fi
 }
 

@@ -19,11 +19,12 @@ check_git=$(git --version 1> /dev/null 2>&1)
 
 
 ## Zabbix user needs shell to run sudo and cron
-usermod -s /bin/bash -m -d $ZBX_HOME zabbix
+usermod -s /bin/bash -d $ZBX_HOME -m zabbix
 
 ## Zabbix sudo needs
 # TODO: handle more granular, read and update config instead of appending
-cat >> /etc/sudoers << EOF
+if [ $(grep -ci zabbix /etc/sudoers) -ne 0 ]; then
+    cat >> /etc/sudoers << EOF
 
 # Added for Zabbix custom monitoring needs
 Defaults:zabbix !requiretty
@@ -31,20 +32,32 @@ Cmnd_Alias ZABBIX = /usr/bin/test, /bin/cat, /usr/bin/stat, /usr/bin/tail
 zabbix ALL = NOPASSWD: ZABBIX
 
 EOF
+else
+    echo "Already zabbix specific config in sudo"
+    echo "Validate that you already have the following:"
+    echo "    Cmnd_Alias ZABBIX = /usr/bin/test, /bin/cat, /usr/bin/stat, /usr/bin/tail"
+    echo
+fi
+    
 
 ## Functions
 ## Setup or update Zabbix scripts
 sync_scripts() {
     cd $ZBX_HOME
-    if [ -d .git ]; then
+    if [ -d source/.git ]; then
+	      cd source
         git pull
     else
-        git clone $ZBX_REPO .
+        git clone $ZBX_REPO source
     fi
 }
 
 # Ugly .. need re-architecture
 sync_scripts
+cd $ZBX_HOME
+ln -s $ZBX_HOME/source/scripts $ZBX_HOME/scripts
+ln -s $ZBX_HOME/source/conf $ZBX_HOME/conf
+
 
 create_mysql_config() {
 
@@ -96,12 +109,12 @@ fi
 ## Create crontab
 ## TODO: use patch instead
 if [ ! -f /etc/cron.d/zabbix ]; then
-    cp $ZBX_HOME/setup/zabbix.cron /etc/cron.d/zabbix
+    cp $ZBX_HOME/source/setup/zabbix.cron /etc/cron.d/zabbix
 else
     echo 'Commenting out existing cronjob for zabbix...'
     sed -i 's/^/# /' /etc/cron.d/zabbix
     echo 'Appending new cronjob for zabbix...'
-    cat $ZBX_HOME/setup/zabbix.cron >> /etc/cron.d/zabbix
+    cat $ZBX_HOME/source/setup/zabbix.cron >> /etc/cron.d/zabbix
 fi
 
 ## Appending UserParameters to zabbix-agentd.conf
@@ -112,7 +125,7 @@ if [ ! -f /etc/zabbix/zabbix_agentd.conf ]; then
     echo " Custom configuration available in $ZBX_HOME/setup/zabbix_agentd-extra.conf"
 else
     echo 'Appending custom UserParameters to zabbix configuration file...'
-    cat $ZBX_HOME/setup/zabbix_agentd-extra.conf >> /etc/zabbix/zabbix-agentd.conf
+    cat $ZBX_HOME/source/setup/zabbix_agentd-extra.conf >> /etc/zabbix/zabbix-agentd.conf
 fi
 
 ## Restarting agent

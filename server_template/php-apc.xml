@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zabbix_export version="1.0" date="29.08.11" time="22.48">
+<zabbix_export version="1.0" date="29.08.11" time="23.15">
   <hosts>
-    <host name="Template_IOStat">
+    <host name="Template_PHP-APC">
       <proxy_hostid>0</proxy_hostid>
       <useip>1</useip>
       <dns></dns>
@@ -20,18 +20,18 @@
       </groups>
       <triggers/>
       <items>
-        <item type="0" key="iostat[sda,%util]" value_type="0">
-          <description>IOStat $1 $2</description>
+        <item type="0" key="php-apc[cached_files_count]" value_type="0">
+          <description>PHP - APC Cached Files Count</description>
           <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
+          <delay>300</delay>
+          <history>15</history>
           <trends>365</trends>
-          <status>0</status>
+          <status>1</status>
           <data_type>0</data_type>
           <units></units>
           <multiplier>0</multiplier>
           <delta>0</delta>
-          <formula>1</formula>
+          <formula>0</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
           <delay_flex></delay_flex>
@@ -41,30 +41,30 @@
           <publickey></publickey>
           <privatekey></privatekey>
           <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
           <snmp_port>161</snmp_port>
           <snmpv3_securityname></snmpv3_securityname>
           <snmpv3_securitylevel>0</snmpv3_securitylevel>
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>IOStat</application>
+            <application>PHP-APC</application>
           </applications>
         </item>
-        <item type="0" key="iostat[sda,avgqu-sz]" value_type="0">
-          <description>IOStat $1 $2</description>
+        <item type="0" key="php-apc[cached_files_size]" value_type="0">
+          <description>PHP - APC Cached Files Size</description>
           <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
+          <delay>300</delay>
+          <history>15</history>
           <trends>365</trends>
-          <status>0</status>
+          <status>1</status>
           <data_type>0</data_type>
           <units></units>
           <multiplier>0</multiplier>
           <delta>0</delta>
-          <formula>1024</formula>
+          <formula>0</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
           <delay_flex></delay_flex>
@@ -74,30 +74,30 @@
           <publickey></publickey>
           <privatekey></privatekey>
           <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
           <snmp_port>161</snmp_port>
           <snmpv3_securityname></snmpv3_securityname>
           <snmpv3_securitylevel>0</snmpv3_securitylevel>
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>IOStat</application>
+            <application>PHP-APC</application>
           </applications>
         </item>
-        <item type="0" key="iostat[sda,avgrq-sz]" value_type="0">
-          <description>IOStat $1 $2</description>
+        <item type="0" key="php-apc[fragmentation]" value_type="0">
+          <description>PHP - APC Memory Fragmentation</description>
           <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
+          <delay>300</delay>
+          <history>15</history>
           <trends>365</trends>
-          <status>0</status>
+          <status>1</status>
           <data_type>0</data_type>
           <units></units>
           <multiplier>0</multiplier>
           <delta>0</delta>
-          <formula>1024</formula>
+          <formula>0</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
           <delay_flex></delay_flex>
@@ -107,30 +107,30 @@
           <publickey></publickey>
           <privatekey></privatekey>
           <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
           <snmp_port>161</snmp_port>
           <snmpv3_securityname></snmpv3_securityname>
           <snmpv3_securitylevel>0</snmpv3_securitylevel>
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>IOStat</application>
+            <application>PHP-APC</application>
           </applications>
         </item>
-        <item type="0" key="iostat[sda,await]" value_type="0">
-          <description>IOStat $1 $2</description>
+        <item type="0" key="php-apc[hits]" value_type="0">
+          <description>PHP - APC Hits</description>
           <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
+          <delay>300</delay>
+          <history>15</history>
           <trends>365</trends>
-          <status>0</status>
+          <status>1</status>
           <data_type>0</data_type>
           <units></units>
           <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>1</formula>
+          <delta>1</delta>
+          <formula>0</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
           <delay_flex></delay_flex>
@@ -140,30 +140,30 @@
           <publickey></publickey>
           <privatekey></privatekey>
           <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
           <snmp_port>161</snmp_port>
           <snmpv3_securityname></snmpv3_securityname>
           <snmpv3_securitylevel>0</snmpv3_securitylevel>
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>IOStat</application>
+            <application>PHP-APC</application>
           </applications>
         </item>
-        <item type="0" key="iostat[sda,r/s]" value_type="0">
-          <description>IOStat $1 $2</description>
+        <item type="0" key="php-apc[hit_rate]" value_type="0">
+          <description>PHP - APC Hit Rate</description>
           <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
+          <delay>300</delay>
+          <history>15</history>
           <trends>365</trends>
-          <status>0</status>
+          <status>1</status>
           <data_type>0</data_type>
           <units></units>
           <multiplier>0</multiplier>
           <delta>0</delta>
-          <formula>1</formula>
+          <formula>0</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
           <delay_flex></delay_flex>
@@ -173,63 +173,63 @@
           <publickey></publickey>
           <privatekey></privatekey>
           <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
           <snmp_port>161</snmp_port>
           <snmpv3_securityname></snmpv3_securityname>
           <snmpv3_securitylevel>0</snmpv3_securitylevel>
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>IOStat</application>
+            <application>PHP-APC</application>
           </applications>
         </item>
-        <item type="0" key="iostat[sda,rkB/s]" value_type="0">
-          <description>IOStat $1 $2</description>
+        <item type="0" key="php-apc[insert_rate]" value_type="0">
+          <description>PHP - APC Insert Rate</description>
           <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
+          <delay>300</delay>
+          <history>15</history>
           <trends>365</trends>
-          <status>0</status>
+          <status>1</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>PHP-APC</application>
+          </applications>
+        </item>
+        <item type="0" key="php-apc[mem_free]" value_type="0">
+          <description>PHP - APC Free Memory</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>300</delay>
+          <history>15</history>
+          <trends>365</trends>
+          <status>1</status>
           <data_type>0</data_type>
           <units>b</units>
-          <multiplier>1</multiplier>
-          <delta>0</delta>
-          <formula>1024</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>IOStat</application>
-          </applications>
-        </item>
-        <item type="0" key="iostat[sda,rrqm/s]" value_type="0">
-          <description>IOStat $1 $2</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
           <multiplier>0</multiplier>
           <delta>0</delta>
-          <formula>1</formula>
+          <formula>0</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
           <delay_flex></delay_flex>
@@ -239,96 +239,30 @@
           <publickey></publickey>
           <privatekey></privatekey>
           <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
           <snmp_port>161</snmp_port>
           <snmpv3_securityname></snmpv3_securityname>
           <snmpv3_securitylevel>0</snmpv3_securitylevel>
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>IOStat</application>
+            <application>PHP-APC</application>
           </applications>
         </item>
-        <item type="0" key="iostat[sda,svctm]" value_type="0">
-          <description>IOStat $1 $2</description>
+        <item type="0" key="php-apc[mem_used]" value_type="0">
+          <description>PHP - APC Used Memory</description>
           <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
+          <delay>300</delay>
+          <history>15</history>
           <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>1</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>IOStat</application>
-          </applications>
-        </item>
-        <item type="0" key="iostat[sda,w/s]" value_type="0">
-          <description>IOStat $1 $2</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>1</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>IOStat</application>
-          </applications>
-        </item>
-        <item type="0" key="iostat[sda,wkB/s]" value_type="0">
-          <description>IOStat $1 $2</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
-          <trends>365</trends>
-          <status>0</status>
+          <status>1</status>
           <data_type>0</data_type>
           <units>b</units>
-          <multiplier>1</multiplier>
+          <multiplier>0</multiplier>
           <delta>0</delta>
-          <formula>1024</formula>
+          <formula>0</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
           <delay_flex></delay_flex>
@@ -338,30 +272,63 @@
           <publickey></publickey>
           <privatekey></privatekey>
           <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
           <snmp_port>161</snmp_port>
           <snmpv3_securityname></snmpv3_securityname>
           <snmpv3_securitylevel>0</snmpv3_securitylevel>
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>IOStat</application>
+            <application>PHP-APC</application>
           </applications>
         </item>
-        <item type="0" key="iostat[sda,wrqm/s]" value_type="0">
-          <description>IOStat $1 $2</description>
+        <item type="0" key="php-apc[misses]" value_type="0">
+          <description>PHP - APC Misses</description>
           <ipmi_sensor></ipmi_sensor>
-          <delay>180</delay>
-          <history>30</history>
+          <delay>300</delay>
+          <history>15</history>
           <trends>365</trends>
-          <status>0</status>
+          <status>1</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>1</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>PHP-APC</application>
+          </applications>
+        </item>
+        <item type="0" key="php-apc[miss_rate]" value_type="0">
+          <description>PHP - APC Miss Rate</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>300</delay>
+          <history>15</history>
+          <trends>365</trends>
+          <status>1</status>
           <data_type>0</data_type>
           <units></units>
           <multiplier>0</multiplier>
           <delta>0</delta>
-          <formula>1</formula>
+          <formula>0</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
           <delay_flex></delay_flex>
@@ -371,29 +338,128 @@
           <publickey></publickey>
           <privatekey></privatekey>
           <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
           <snmp_port>161</snmp_port>
           <snmpv3_securityname></snmpv3_securityname>
           <snmpv3_securitylevel>0</snmpv3_securitylevel>
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>IOStat</application>
+            <application>PHP-APC</application>
+          </applications>
+        </item>
+        <item type="0" key="php-apc[request_rate]" value_type="0">
+          <description>PHP - APC Request Rate</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>300</delay>
+          <history>15</history>
+          <trends>365</trends>
+          <status>1</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>PHP-APC</application>
+          </applications>
+        </item>
+        <item type="0" key="php-apc[shm_size]" value_type="0">
+          <description>PHP - APC Shared Memory Size</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>300</delay>
+          <history>15</history>
+          <trends>365</trends>
+          <status>1</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>PHP-APC</application>
+          </applications>
+        </item>
+        <item type="0" key="php-apc[version]" value_type="1">
+          <description>PHP - APC Version</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>3600</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>1</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>PHP-APC</application>
           </applications>
         </item>
       </items>
       <templates/>
       <graphs>
-        <graph name="IOStat - /dev/sda - requests" width="900" height="200">
-          <ymin_type>0</ymin_type>
+        <graph name="PHP-APC - Hits / Misses" width="900" height="200">
+          <ymin_type>1</ymin_type>
           <ymax_type>0</ymax_type>
           <ymin_item_key></ymin_item_key>
           <ymax_item_key></ymax_item_key>
           <show_work_period>0</show_work_period>
           <show_triggers>0</show_triggers>
-          <graphtype>0</graphtype>
+          <graphtype>1</graphtype>
           <yaxismin>0.0000</yaxismin>
           <yaxismax>100.0000</yaxismax>
           <show_legend>0</show_legend>
@@ -401,8 +467,8 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_IOStat:iostat[sda,r/s]">
-              <drawtype>0</drawtype>
+            <graph_element item="Template_PHP-APC:php-apc[hits]">
+              <drawtype>1</drawtype>
               <sortorder>0</sortorder>
               <color>009900</color>
               <yaxisside>0</yaxisside>
@@ -410,10 +476,10 @@
               <type>0</type>
               <periods_cnt>5</periods_cnt>
             </graph_element>
-            <graph_element item="Template_IOStat:iostat[sda,w/s]">
-              <drawtype>0</drawtype>
+            <graph_element item="Template_PHP-APC:php-apc[misses]">
+              <drawtype>1</drawtype>
               <sortorder>1</sortorder>
-              <color>990000</color>
+              <color>EE0000</color>
               <yaxisside>0</yaxisside>
               <calc_fnc>4</calc_fnc>
               <type>0</type>
@@ -421,14 +487,14 @@
             </graph_element>
           </graph_elements>
         </graph>
-        <graph name="IOStat - /dev/sda - read and write" width="900" height="200">
-          <ymin_type>0</ymin_type>
+        <graph name="PHP-APC - Hit / Miss rate" width="900" height="200">
+          <ymin_type>1</ymin_type>
           <ymax_type>0</ymax_type>
           <ymin_item_key></ymin_item_key>
           <ymax_item_key></ymax_item_key>
           <show_work_period>0</show_work_period>
           <show_triggers>0</show_triggers>
-          <graphtype>0</graphtype>
+          <graphtype>1</graphtype>
           <yaxismin>0.0000</yaxismin>
           <yaxismax>100.0000</yaxismax>
           <show_legend>0</show_legend>
@@ -436,8 +502,8 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_IOStat:iostat[sda,rkB/s]">
-              <drawtype>0</drawtype>
+            <graph_element item="Template_PHP-APC:php-apc[hit_rate]">
+              <drawtype>1</drawtype>
               <sortorder>0</sortorder>
               <color>009900</color>
               <yaxisside>0</yaxisside>
@@ -445,10 +511,10 @@
               <type>0</type>
               <periods_cnt>5</periods_cnt>
             </graph_element>
-            <graph_element item="Template_IOStat:iostat[sda,wkB/s]">
-              <drawtype>0</drawtype>
+            <graph_element item="Template_PHP-APC:php-apc[miss_rate]">
+              <drawtype>1</drawtype>
               <sortorder>1</sortorder>
-              <color>990000</color>
+              <color>EE0000</color>
               <yaxisside>0</yaxisside>
               <calc_fnc>4</calc_fnc>
               <type>0</type>
@@ -456,14 +522,14 @@
             </graph_element>
           </graph_elements>
         </graph>
-        <graph name="IOStat - /dev/sda - requests merged" width="900" height="200">
-          <ymin_type>0</ymin_type>
+        <graph name="PHP-APC - Memory Status" width="900" height="200">
+          <ymin_type>1</ymin_type>
           <ymax_type>0</ymax_type>
           <ymin_item_key></ymin_item_key>
           <ymax_item_key></ymax_item_key>
           <show_work_period>0</show_work_period>
           <show_triggers>0</show_triggers>
-          <graphtype>0</graphtype>
+          <graphtype>1</graphtype>
           <yaxismin>0.0000</yaxismin>
           <yaxismax>100.0000</yaxismax>
           <show_legend>0</show_legend>
@@ -471,19 +537,19 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_IOStat:iostat[sda,rrqm/s]">
-              <drawtype>0</drawtype>
+            <graph_element item="Template_PHP-APC:php-apc[mem_used]">
+              <drawtype>1</drawtype>
               <sortorder>0</sortorder>
-              <color>009900</color>
+              <color>EE0000</color>
               <yaxisside>0</yaxisside>
               <calc_fnc>4</calc_fnc>
               <type>0</type>
               <periods_cnt>5</periods_cnt>
             </graph_element>
-            <graph_element item="Template_IOStat:iostat[sda,wrqm/s]">
-              <drawtype>0</drawtype>
+            <graph_element item="Template_PHP-APC:php-apc[mem_free]">
+              <drawtype>1</drawtype>
               <sortorder>1</sortorder>
-              <color>990000</color>
+              <color>009900</color>
               <yaxisside>0</yaxisside>
               <calc_fnc>4</calc_fnc>
               <type>0</type>

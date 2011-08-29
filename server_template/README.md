@@ -14,10 +14,23 @@ Zabbix templates are a collection of:
 
 # Zabbix server setup
 
-From that server, you may either want to download locally the templates (.xml files) and (perform changes) import them on your Zabbix server one by one.
+From that server, you will want to download locally the templates (.xml files) and (perform changes) import them on your Zabbix server one by one.
 
-Then, apply those templates to your hosts and get them to grab the dat you want...
+Then, apply those templates to your hosts and get them to grab the data you want...
 
 You might (for sure) want to create screens to display relevant info for your platform. Notice that the screens are not exportable natively from Zabbix and that you'll have to re-create them if you change you server. Don't forget about dynamic graphs if you want to build say .. server status!
 
+# Custom setup
 
+I know, I know... templates do not work always straight out of the box. Too bad, enjoy it still! This is open source and you are more than welcome to add, correct fix the templates!
+
+Known issues are:
+
+* You need to manually add or clone items that are not exactly matching... (ex. you use sdb instead of sda? or want to add extra disks? You'll have to add them manually, and create the triggers, and the graph... too bad :)
+* You need to customize your items because they are not using the same exact ports (ex. nginx status). Clone them and update their key! Create new things! Get your imagination go wild to the extend of having something useful
+
+# Troubleshooting
+
+Get you server straight! Make sure you don't have any duplicated key or named items or the import of the template will fail. Follow and fix the zabbix web server's errors.
+
+Do your cleanup, and if this is still not working drop me a mail at vincent.viallet@gmail.com

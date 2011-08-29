@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export version="1.0" date="29.08.11" time="23.16">
+  <hosts>
+    <host name="Template_MySQL_Replication">
+      <proxy_hostid>0</proxy_hostid>
+      <useip>1</useip>
+      <dns></dns>
+      <ip>127.0.0.1</ip>
+      <port>10050</port>
+      <status>3</status>
+      <useipmi>0</useipmi>
+      <ipmi_ip>127.0.0.1</ipmi_ip>
+      <ipmi_port>623</ipmi_port>
+      <ipmi_authtype>0</ipmi_authtype>
+      <ipmi_privilege>2</ipmi_privilege>
+      <ipmi_username></ipmi_username>
+      <ipmi_password></ipmi_password>
+      <groups>
+        <group>Templates</group>
+      </groups>
+      <triggers>
+        <trigger>
+          <description>MySQL Replication is slow on {HOSTNAME}</description>
+          <type>0</type>
+          <expression>{Template_MySQL_Replication:mysql[Seconds_Behind_Master,slave].avg(#3)}&gt;120</expression>
+          <url></url>
+          <status>0</status>
+          <priority>3</priority>
+          <comments>Replication is slow :&#13;
+  - check server disk IO&#13;
+  - check server CPU and Load Average</comments>
+        </trigger>
+        <trigger>
+          <description>MySQL Replication stopped on {HOSTNAME}</description>
+          <type>0</type>
+          <expression>{Template_MySQL_Replication:mysql[Slave_SQL_Running,slave].str(Yes)}#1|{Template_MySQL_Replication:mysql[Slave_IO_Running,slave].str(Yes)}#1</expression>
+          <url></url>
+          <status>0</status>
+          <priority>4</priority>
+          <comments>Replication is stopped on server.&#13;
+ - Check last error in Zabbix&#13;
+ - Log on database and fix</comments>
+        </trigger>
+      </triggers>
+      <items>
+        <item type="0" key="mysql[Binlog_Do_DB,master]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Master</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Binlog_Ignore_DB,master]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Master</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Exec_Master_Log_Pos,slave]" value_type="0">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[File,master]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>1</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts></trapper_hosts>
+          <snmp_community>public</snmp_community>
+          <snmp_oid>interfaces.ifTable.ifEntry.ifInOctets.1</snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Master</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Last_Errno,slave]" value_type="0">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Last_Error,slave]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Master_Host,slave]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Master_Log_File,slave]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Master_Port,slave]" value_type="0">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Master_User,slave]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Position,master]" value_type="0">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Master</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Read_Master_Log_Pos,slave]" value_type="0">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Relay_Log_File,slave]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Relay_Log_Pos,slave]" value_type="0">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Relay_Log_Space,slave]" value_type="0">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Relay_Master_Log_File,slave]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Seconds_Behind_Master,slave]" value_type="0">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Skip_Counter,slave]" value_type="0">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Slave_IO_Running,slave]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Slave_IO_State,slave]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+        <item type="0" key="mysql[Slave_SQL_Running,slave]" value_type="1">
+          <description>MySQL $2 - $1</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>120</delay>
+          <history>30</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts>localhost</trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MySQL Slave</application>
+          </applications>
+        </item>
+      </items>
+      <templates/>
+      <graphs/>
+      <macros/>
+    </host>
+  </hosts>
+  <dependencies/>
+</zabbix_export>

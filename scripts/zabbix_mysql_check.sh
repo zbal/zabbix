@@ -89,7 +89,24 @@ get_from_slave(){
   [ -z "$value" ] && echo $ERROR_WRONG_PARAM || echo $value
 }
 
-
+get_from_innodb_file(){
+  param=$1
+  datadir=$($MYSQL --skip-column --silent -e "show global variables like 'datadir';" | awk '{print $2}')
+    if [ -z "$datadir" -o ! -e "$datadir" ]; then echo $ERROR_GENERIC; exit 1; fi
+  pid_file=$($MYSQL --skip-column --silent -e "show global variables like 'pid_file';" | awk '{print $2}')
+    if [ -z "$pid_file" -o ! -e "$pid_file" ]; then echo $ERROR_GENERIC; exit 1; fi
+  innodb_file=$datadir/innodb_status.$(sudo cat $pid_file)
+    if [ "$innodb_file" == "$datadir/innodb_status." ]; then echo $ERROR_GENERIC; exit 1; fi
+	innodb_file_content=$(sudo cat $innodb_file)
+	  if [ -z "$innodb_file_content" ]; then echo $ERROR_GENERIC; exit 1; fi
+	
+	case $param in
+	  innodb_row_queries) echo "$innodb_file_content" | grep 'queries inside InnoDB' | awk '{print $1}';;
+	  innodb_row_queue)   echo "$innodb_file_content" | grep 'queries inside InnoDB' | awk '{print $5}';;
+	  *) echo $ERROR_WRONG_PARAM; exit 1;;
+  esac
+}
+ 
 # 
 # Grab data from mysql for key ZBX_REQ_DATA
 #
@@ -98,6 +115,7 @@ case $ZBX_REQ_DATA_SOURCE in
   master)	get_from_master		"$ZBX_REQ_DATA";;
   status)	get_from_status		"$ZBX_REQ_DATA";;
   variables)	get_from_variables	"$ZBX_REQ_DATA";;
+  innodb_file) 	get_from_innodb_file "$ZBX_REQ_DATA";;
   *) echo $ERROR_WRONG_PARAM; exit 1;;
 esac
 

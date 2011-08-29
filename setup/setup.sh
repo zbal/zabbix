@@ -10,23 +10,36 @@
 #  - test new items
 ####################
 
-ZBX_REPO='git://wiredcraft'
+ZBX_REPO='https://zbal@github.com/zbal/zabbix.git'
 ZBX_HOME=/usr/share/zabbix
 
-## Zabbix user needs shell to run sudo
+## Zabbix user needs shell to run sudo and cron
 usermod -s /bin/bash -m $ZBX_HOME zabbix
+
+## Zabbix sudo needs
+# TODO: handle more granular, read and update config instead of appending
+cat >> /etc/sudoers << EOF
+
+# Added for Zabbix custom monitoring needs
+Defaults:zabbix !requiretty
+Cmnd_Alias ZABBIX = /usr/bin/test, /bin/cat, /usr/bin/stat, /usr/bin/tail
+zabbix ALL = NOPASSWD: ZABBIX
+
+EOF
 
 ## Functions
 ## Setup or update Zabbix scripts
 sync_scripts() {
     cd $ZBX_HOME
-    if [ -d scripts/.git ]; then
-        cd scripts
+    if [ -d .git ]; then
         git pull
     else
-        git clone $ZBX_REPO scripts
+        git clone $ZBX_REPO .
     fi
 }
+
+# Ugly .. need re-architecture
+sync_scripts
 
 create_mysql_config() {
 
@@ -72,6 +85,7 @@ else
     MY_ENABLE=0
 fi
 
+# Handle MySQL if required during the installation
 [ $((MY_ENABLE)) -eq 1 ] && create_mysql_config
 
 ## Create crontab
@@ -87,13 +101,13 @@ fi
 
 ## Appending UserParameters to zabbix-agentd.conf
 ## TODO: use patch instead
-if [ ! -f /etc/zabbix/zabbix-agentd.conf ]; then
+if [ ! -f /etc/zabbix/zabbix_agentd.conf ]; then
     echo 'Missing zabbix configuration file.'
     echo 'Install Zabbix and append the configuration manually'
-    echo " Custom configuration available in $ZBX_HOME/setup/zabbix-agentd.conf"
+    echo " Custom configuration available in $ZBX_HOME/setup/zabbix_agentd-extra.conf"
 else
     echo 'Appending custom UserParameters to zabbix configuration file...'
-    cat $ZBX_HOME/setup/zabbix-agentd.conf >> /etc/zabbix/zabbix-agentd.conf
+    cat $ZBX_HOME/setup/zabbix_agentd-extra.conf >> /etc/zabbix/zabbix-agentd.conf
 fi
 
 ## Restarting agent

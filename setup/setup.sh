@@ -136,7 +136,7 @@ if [ ! -f /etc/zabbix/zabbix_agentd.conf ]; then
     echo " Custom configuration available in $ZBX_HOME/setup/zabbix_agentd-extra.conf"
 else
     echo 'Appending custom UserParameters to zabbix configuration file...'
-    cat $ZBX_HOME/source/setup/zabbix_agentd-extra.conf >> /etc/zabbix/zabbix-agentd.conf
+    cat $ZBX_HOME/source/setup/zabbix_agentd-extra.conf >> /etc/zabbix/zabbix_agentd.conf
 fi
 
 ## Restarting agent

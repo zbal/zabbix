@@ -13,6 +13,9 @@
 ZBX_REPO='https://zbal@github.com/zbal/zabbix.git'
 ZBX_HOME=/usr/share/zabbix
 
+# Fix wrong SSL certificates from github
+env GIT_SSL_NO_VERIFY=true
+
 # Initial Check
 check_git=$(git --version 1> /dev/null 2>&1)
   if [ $? -ne 0 ]; then echo "Git is not installed. Aborting."; exit 1; fi

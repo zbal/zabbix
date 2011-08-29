@@ -15,7 +15,7 @@ ZBX_HOME=/usr/share/zabbix
 
 # Initial Check
 check_git=$(git --version 1> /dev/null 2>&1)
-  if [ $? -ne 0 ]; then echo "Git is not installed. Aborting."; exit 1 fi
+  if [ $? -ne 0 ]; then echo "Git is not installed. Aborting."; exit 1; fi
 
 
 ## Zabbix user needs shell to run sudo and cron

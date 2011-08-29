@@ -14,7 +14,7 @@ ZBX_REPO='https://zbal@github.com/zbal/zabbix.git'
 ZBX_HOME=/usr/share/zabbix
 
 # Fix wrong SSL certificates from github
-env GIT_SSL_NO_VERIFY=true
+export GIT_SSL_NO_VERIFY=true
 
 # Initial Check
 check_git=$(git --version 1> /dev/null 2>&1)

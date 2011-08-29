@@ -19,7 +19,7 @@ check_git=$(git --version 1> /dev/null 2>&1)
 
 
 ## Zabbix user needs shell to run sudo and cron
-usermod -s /bin/bash -m $ZBX_HOME zabbix
+usermod -s /bin/bash -m -d $ZBX_HOME zabbix
 
 ## Zabbix sudo needs
 # TODO: handle more granular, read and update config instead of appending

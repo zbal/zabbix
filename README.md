@@ -14,16 +14,24 @@ All updates / forks / suggestions are more than welcome!
 
 # Credits
 
-* [__ChinaNetCloud__](http://www.chinanetcloud.com); they made me discover Zabbix and I developed a huge amount of custom scripts for them
-* [__Wiredcraft__](); they made me re-think and review most of my scripts and jump to another level
+* [__ChinaNetCloud__](http://www.chinanetcloud.com); they made me discover Zabbix and I developed a huge amount of custom scripts (so custom that it can't always be shared :)),
+* [__Wiredcraft__](http://wiredcraft.com); they made me re-think, review and even entirely rewrite most of my scripts and jump to another level.
 
-Objectives
+# Objectives
+
+The closest we are from reality, the better we are. Real-time is strongly suggested in the development of those scripts.
+
+Real-time might not always be the best approach due to latency to get data, cron jobs might be an alternative. But! most of the cronjobs behaviors can also be emulated through well thoughts scripts and temp files.
+
+To make it simple, develop for real-time, do not worry about the amount of queries or commands required to get a result. If for whatever reason you hit an edge case where real-time is not an option, then work via temp files and finally cron jobs. And, I know, cron jobs and file parsing is usually easier to develop but think whenever you need to do mass deployment and perform changes on 50+ servers... Don't waste your time one deployment! Make you script platform agnostic and running with the least update you'd ever need!
 
 # Usage
 
 (Almost) one liner install script, as root...
 
-<code>curl -k https://raw.github.com/zbal/zabbix/master/setup/setup.sh > zabbix_setup.sh && bash zabbix_setup.sh</code>
+<code>curl -k https://raw.github.com/zbal/zabbix/master/setup/setup.sh > zabbix_setup.sh && bash zabbix_setup.sh; rm -f zabbix_setup.sh</code>
+
+(And yes, rm -f the script 'cause any existing zabbix_setup.sh file you may had has been overridden and is worth nothing anyway!)
 
 # Requirements
 

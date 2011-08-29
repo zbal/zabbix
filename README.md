@@ -10,6 +10,7 @@ This is a collection of custom scripts developed over time to monitor the essent
 # Contact
 
 All updates / forks / suggestions are more than welcome!
+
 *  vincent.viallet@gmail.com
 
 # Credits
@@ -23,7 +24,7 @@ The closest we are from reality, the better we are. Real-time is strongly sugges
 
 Real-time might not always be the best approach due to latency to get data, cron jobs might be an alternative. But! most of the cronjobs behaviors can also be emulated through well thoughts scripts and temp files.
 
-To make it simple, develop for real-time, do not worry about the amount of queries or commands required to get a result. If for whatever reason you hit an edge case where real-time is not an option, then work via temp files and finally cron jobs. And, I know, cron jobs and file parsing is usually easier to develop but think whenever you need to do mass deployment and perform changes on 50+ servers... Don't waste your time one deployment! Make you script platform agnostic and running with the least update you'd ever need!
+To make it simple, develop for real-time, do not worry about the amount of queries or commands required to get a result. If for whatever reason you hit an edge case where real-time is not an option, then work via temp files and finally cron jobs. And, I know, cron jobs and file parsing is usually easier to develop but think whenever you need to do mass deployment and perform changes on 200+ servers... Don't waste your time one deployment! Make you script platform agnostic and running with the least update you'd ever need!
 
 # Usage
 
@@ -73,7 +74,7 @@ Get data from memcachetool
 Get data from varnishstat
 
 ## column-reader
-Allows you to read any file and any column from it. Extremely useful to get data from /proc, /sys, other files which are providing column-base which are not world-readable.
+Allows you to read any file and any column from it. Extremely useful to get data from /proc, /sys, other files which are providing column-based data which are not world-readable.
 
 ## log-match
 Allows you to match data in logs and give you counts based on REGEX. For instance, allows you to get count of return codes for 2xx, 3xx, 4xx, 5xx in web-logs, or anything kind of logs (varnish, etc.).

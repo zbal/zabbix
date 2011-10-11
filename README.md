@@ -100,3 +100,21 @@ Medium term, either zabbix built-in will be used, or another version (available 
 Allows you to read the data out of the vmstat command. Probably available shortly via zabbix built-in.
 
 Requires cron job to get the data.
+
+# Still not having Zabbix-agentd installed ??
+
+Really ? C'mon it ain't that hard to find good binaries!
+
+Try the following repo (CentOS / RH 5 only!):
+
+cat >> /etc/yum.repos.d/zabbix.repo << EOF
+[home_ericgearhart_zabbix]
+name=Zabbix (RedHat_RHEL-5)
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/home:/ericgearhart:/zabbix/RedHat_RHEL-5/
+gpgcheck=1
+gpgkey=http://download.opensuse.org/repositories/home:/ericgearhart:/zabbix/RedHat_RHEL-5/repodata/repomd.xml.key
+enabled=1
+EOF
+
+yum install -y zabbix-agent

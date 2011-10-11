@@ -69,6 +69,10 @@ cd $ZBX_HOME
 ln -s $ZBX_HOME/source/scripts $ZBX_HOME/scripts
 ln -s $ZBX_HOME/source/conf $ZBX_HOME/conf
 
+# data folder is required for a couple scripts, data is prefered for files being parsed by the agent
+mkdir -p $ZBX_HOME/data # temp data for zabbix
+chown -R zabbix. $ZBX_HOME
+
 
 create_mysql_config() {
 

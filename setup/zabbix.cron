@@ -1,4 +1,4 @@
 # run zabbix data gathering for custom checks every min
 * * * * * zabbix bash /usr/share/zabbix/scripts/zabbix_vmstat_cron.sh
-* * * * * zabbix bash /use/share/zabbix/scripts/zabbix_iostat_cron.sh
+* * * * * zabbix bash /usr/share/zabbix/scripts/zabbix_iostat_cron.sh
 

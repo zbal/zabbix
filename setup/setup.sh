@@ -26,6 +26,7 @@ usermod -s /bin/bash -d $ZBX_HOME -m zabbix
 
 ## Zabbix sudo needs
 # TODO: handle more granular, read and update config instead of appending
+#  rely on visudo -c -s -f /etc/sudoers.zabbix using a copy of sudoers instead of raw update...
 if [ $(grep -ci zabbix /etc/sudoers) -ne 0 ]; then
     cat >> /etc/sudoers << EOF
 

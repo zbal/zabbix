@@ -9,6 +9,11 @@
 #
 # Info:
 #  - mysql data are gathered real-time
+#
+# Note:
+#  
+#  - make sure zabbix user has the following sudo config:
+#    Cmnd_Alias ZABBIX = ..........., /usr/bin/test, /bin/cat
 ##################################
 # Contact:
 #  vincent.viallet@gmail.com
@@ -94,19 +99,22 @@ get_from_innodb_file(){
   datadir=$($MYSQL --skip-column --silent -e "show global variables like 'datadir';" | awk '{print $2}')
     if [ -z "$datadir" -o ! -e "$datadir" ]; then echo $ERROR_GENERIC; exit 1; fi
   pid_file=$($MYSQL --skip-column --silent -e "show global variables like 'pid_file';" | awk '{print $2}')
-    if [ -z "$pid_file" -o ! -e "$pid_file" ]; then echo $ERROR_GENERIC; exit 1; fi
-  innodb_file=$datadir/innodb_status.$(sudo cat $pid_file)
+    if [ -z "$pid_file" ]; then echo $ERROR_GENERIC; exit 1; fi;
+    if sudo /usr/bin/test ! -e "$pid_file" ; then echo $ERROR_GENERIC; exit 1; fi;
+  innodb_file=$datadir/innodb_status.$(sudo /bin/cat $pid_file)
     if [ "$innodb_file" == "$datadir/innodb_status." ]; then echo $ERROR_GENERIC; exit 1; fi
-	innodb_file_content=$(sudo cat $innodb_file)
-	  if [ -z "$innodb_file_content" ]; then echo $ERROR_GENERIC; exit 1; fi
-	
-	case $param in
-	  innodb_row_queries) echo "$innodb_file_content" | grep 'queries inside InnoDB' | awk '{print $1}';;
-	  innodb_row_queue)   echo "$innodb_file_content" | grep 'queries inside InnoDB' | awk '{print $5}';;
-	  *) echo $ERROR_WRONG_PARAM; exit 1;;
+  innodb_file_content=$(sudo /bin/cat $innodb_file)
+    if [ -z "$innodb_file_content" ]; then echo $ERROR_GENERIC; exit 1; fi
+
+  case $param in
+    innodb_row_queries)     echo "$innodb_file_content" | grep 'queries inside InnoDB' | awk '{print $1}';;
+    innodb_row_queue)       echo "$innodb_file_content" | grep 'queries inside InnoDB' | awk '{print $5}';;
+    history_list_length)    echo "$innodb_file_content" | grep -i 'history list' | awk '{print $4}';;
+    *) echo $ERROR_WRONG_PARAM; exit 1;;
   esac
 }
- 
+
+
 # 
 # Grab data from mysql for key ZBX_REQ_DATA
 #

@@ -19,6 +19,23 @@
         <group>Templates</group>
       </groups>
       <triggers/>
+        <trigger>
+          <description>Nginx is not running on {HOSTNAME}</description>
+          <type>0</type>
+          <expression>{Template_Nginx:proc.num[nginx].last(0)}=0</expression>
+          <url></url>
+          <status>0</status>
+          <priority>4</priority>
+          <comments>Nginx is not running.&#13;
+      &#13;
+      It has been stopped / shutdown or has crashed. &#13;
+      Check on the server for more details:&#13;
+        - w / last&#13;
+        - dmesg logs&#13;
+        - /var/log/messages&#13;
+        - nginx error logs</comments>
+        </trigger>
+      </triggers>
       <items>
         <item type="0" key="nginx[accepted_connections]" value_type="0">
           <description>Nginx $1</description>
@@ -283,6 +300,7 @@
           <applications/>
         </item>
       </items>
+      
       <templates/>
       <graphs>
         <graph name="Nginx - Connections and Requests status" width="900" height="200">

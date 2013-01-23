@@ -18,7 +18,7 @@
       <groups>
         <group>Templates</group>
       </groups>
-      <triggers/>
+      <triggers>
         <trigger>
           <description>Nginx is not running on {HOSTNAME}</description>
           <type>0</type>

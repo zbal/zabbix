@@ -41,9 +41,9 @@ DISKSTATS_WAIT=$TMP_FOLDER/diskstats.wait
 # Gather disk statistics from /proc/diskstats
 # EC2 uses sda1 (not sda) - need to deal with that case
 if [ $(grep -cE 'sda ' /proc/diskstats) -eq 0 -a $(grep -cE 'sda1 ' /proc/diskstats) -eq 1 ]; then
-  grep -E ' sda1 | [hd,sd,xvd][a-z]{1,2} | cciss | c0d0 ' /proc/diskstats > $DISKSTATS
+  grep -E ' sda1 | (hd|sd|xvd)[a-z] | cciss | c0d0 ' /proc/diskstats > $DISKSTATS
 else
-  grep -E ' [hd,sd,xvd][a-z]{1,2} ' /proc/diskstats > $DISKSTATS
+  grep -E ' (hd|sd|xvd)[a-z] ' /proc/diskstats > $DISKSTATS
 fi
 
 # Manage configuration file - creation on the fly
